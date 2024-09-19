@@ -1,7 +1,5 @@
 # Pythonymp-rist-3
 Esimerkki versiohallinnasta
-# PythonYmparisto
-Esimerkkejä Python-ympäristön asetuksista
 
 # Taulukot
 | Tiedosto | Tarkoitus | Tarvitsee moduleita | Käyttää tätä modulia |

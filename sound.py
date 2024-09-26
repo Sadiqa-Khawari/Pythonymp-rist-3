@@ -1,6 +1,7 @@
 # MODUULI ÄÄNIMERJJIEN ANTAMISEEN
 # ===============================
-
+"""A module to produce varios sound patterns and play wav-file
+"""
 # KIRJASTOT JA MODUULIT
 # ---------------------
 
@@ -47,8 +48,8 @@ def parametricBeep(frequency, duration):
 # Ääni tulee halutusta tiedostosta, parametrina äänet nimi 
 
 if __name__ == "__main__":
-    #shortBeep()
-    # waitMs(500)
-    # longBeep()
+    shortBeep()
     waitMs(500)
-    parametricBeep(360)
+    longBeep()
+    waitMs(500)
+    #parametricBeep(360)

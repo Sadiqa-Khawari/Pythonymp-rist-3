@@ -1,6 +1,10 @@
 # MODUULI VIDEOKUVAN KÄSITTELYYN
 # ==============================
 
+
+"""A moudule to capture video stream from a webcam
+"""
+
 # KIRJASTOT JA MODUULIT
 # ---------------------
 
@@ -35,7 +39,7 @@ def webstream(camIx):
         if not ret:
            print("Can't receive frames. Exiting ...")
            break
- 
+         # TODO: Selvä voiko käyttä
         # Define a key press (q) to interrupt/quit the program 
         cv2.imshow(windowName, frame)
         if cv2.waitKey(1) == ord('q'):

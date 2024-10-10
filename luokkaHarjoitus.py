@@ -22,4 +22,4 @@ if __name__ == "__main__":
     hemmo1.harrastukset = ["laulaminen", "Kitaran soitto"]
 
     print("Ja tämä hemmo on" , hemmo1.etunimi, hemmo1.sukunimi, " joka harrastaa", hemmo1.harrastukset)
-    print(stara1.etunimi, Srara1.sukunimi )
+    print(Srara1.etunimi, Srara1.sukunimi )

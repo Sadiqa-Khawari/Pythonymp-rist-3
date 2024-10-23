@@ -3,6 +3,7 @@
 
 # KIRJASTOT JA MOODUULIT
 # ----------------------
+
 # kirjosto päivämäärälaskenta varten
 import datetime
 
@@ -113,18 +114,19 @@ class NationalSSN:
     def getDateOfBirth(self) -> None:
         """Sets the value of dateOfBirths property for object
         """
+        # TODO: Onko järkeä hakea syntymäaikaa, jos hetu muuten virheellinen?
         if self.checkSsnLengthOk():
             isoDate = "1799-12-31"
             parts = self.splitSsn()
             centurySymbol = parts["century"]
+
+            # TODO: Mitä jos symboli on väärä, sitähän ei huomioida järkevyystarkistuksessa -> kaatuu
+
             century = self.centuryCodes[centurySymbol]
             isoDate = century[0:2] + parts["years"] + "-" + parts["months"] + "-" + parts["days"]
             self.dateOfBirth = isoDate
 
-    # Lasketaan ikä nyt täysinä vuosina
-    def calculateAge(self):
-        pass
-
+    
     # Selvitetään varmistussumman avulla onko HETu syötetty oikein
     def isValidSsn(self) -> bool:
         """Recalculate the checksum of the SSN and verifies it is the same in the given SSN 
@@ -144,14 +146,29 @@ class NationalSSN:
                 return False
         else:
             return False
+        
+    # Lasketaan ikä nyt täysinä vuosina
+    def calculateAge(self):
+        pass
+        # Tarkistetaan ennen laskentaa, että henkilötunus on oikein syötetty
 
+            #Muutetaan olin syntymääaikaominaisuuteen talennrttu ISO-päivämäärä python-päivämäräksi
+
+            #Haetaan nykyinen päivämäärä
+
+            #Lasketaan päivämäärien ero täysinä vuosina
+
+            # Palautetaan ikä vuosina
+            
 # MAIN KOKEILUJA VARTEN (POISTA KUN EI ENÄÄ TARVITAN)
 # ===================================================
 
 if __name__ == "__main__":
     hetu1 = NationalSSN("130728-478N")
     hetu1.getDateOfBirth()
+    ika = hetu1.calculateAge()
     print("Oikein muodostettu: ", hetu1.checkSsnLengthOk())
     print("HeTun osat ovat: ", hetu1.splitSsn())
     print("Syntymäaikaosa ISO-muodossa on ", hetu1.dateOfBirth)
     print("Henkilötunnus on oikein muodostettu", hetu1.isValidSsn())
+    print("Henkilön ikä on", ika)

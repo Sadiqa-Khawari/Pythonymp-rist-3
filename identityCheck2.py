@@ -152,7 +152,7 @@ class NationalSSN:
             try:
                 century = self.centuryCodes[centurySymbol]
             except Exception as e:
-                raise ValueError("Vuosisata merkki virheellinen")
+                raise ValueError("Vuosisatamerkki virheellinen")
             
             isoDate = century[0:2] + parts["years"] + \
                 "-" + parts["months"] + "-" + parts["days"]
@@ -166,11 +166,8 @@ class NationalSSN:
 
             # Muutetaan olin syntymääaikaominaisuuteen talennrttu ISO-päivämäärä python-päivämäräksi
             pythonBirthDate = datetime.date.fromisoformat(self.dateOfBirth)
-           
 
-            pythonBirthDate = datetime.date.fromisoformat(self.dateOfBirth)
-
-            # Haetaan nykinen päivämärä (ja ke)
+            # Haetaan nykinen päivämärä (ja kelloaika)
             pythonToday = datetime.datetime.now()
 
             #Lasketaan päivämäärien ero täysinä vuosina
@@ -178,6 +175,26 @@ class NationalSSN:
 
             # Palautetaan ikä vuosina
             return ageInYears
+        
+# TODO : Metodi sukupuolen selvittämiseen sekä number- ja gender-ominaisuuden asettaisen
+    def getGender(self):
+
+    # Tarkistetaan ensin, onko SSN oikein syötetty
+        if self.isValidSsn():
+
+            # Otetaan merkkijonosta järjestysnumero hyödyntämällä splitSSN-metodia
+            parts = self.splitSsn()
+
+            # Muutetaan luvuksi ja tallennetaan se ominaisuuden arvoksi
+            number = int(parts["number"])
+            self.number = number
+
+            # Selvitetään onko parillinen (tyttö) vai paritan (poika)
+            if number % 2== 0:
+                self.gender = "Nainen"
+            else:
+                self.gender = "Mies"
+
             
 # MAIN KOKEILUJA VARTEN (POISTA KUN EI ENÄÄ TARVITAN)
 # ===================================================
@@ -185,16 +202,16 @@ class NationalSSN:
 
 if __name__ == "__main__":
     try: 
-        hetu1 = NationalSSN("13072x478N")
+        hetu1 = NationalSSN("130728-478N")
         hetu1.checkSsnLengthOk()
-        hetu1.calculateAge()
+        ika = hetu1.calculateAge()
+        hetu1.getGender()
     except Exception as e:
         print("Tapahtui virhe:", e)
-    """
-    hetu1.getDateOfBirth()
-    ika = hetu1.calculateAge()
-    print("Oikein muodostettu: ", hetu1.checkSsnLengthOk())
+    
+
+    print("On oikein pitunen: ", hetu1.checkSsnLengthOk())
+    print("Henkilötunnus on oikein muodostettu", hetu1.isValidSsn())
     print("HeTun osat ovat: ", hetu1.splitSsn())
     print("Syntymäaikaosa ISO-muodossa on ", hetu1.dateOfBirth)
-    print("Henkilötunnus on oikein muodostettu", hetu1.isValidSsn())
-    print("Henkilön ikä on", ika) """
+   

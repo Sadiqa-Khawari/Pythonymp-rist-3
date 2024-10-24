@@ -138,7 +138,7 @@ class NationalSSN:
         else:
             return False
         
-         # Muutetaan syntymäaikaosa ja vuosisata päivämääräksi
+    # Muutetaan syntymäaikaosa ja vuosisata päivämääräksi
     def getDateOfBirth(self) -> None:
         """Sets the value of dateOfBirths property for object
         """
@@ -148,7 +148,6 @@ class NationalSSN:
             parts = self.splitSsn()
             centurySymbol = parts["century"]
 
-            # TODO: Mitä jos symboli on väärä, sitähän ei huomioida järkevyystarkistuksessa -> kaatuu
             try:
                 century = self.centuryCodes[centurySymbol]
             except Exception as e:
@@ -176,7 +175,7 @@ class NationalSSN:
             # Palautetaan ikä vuosina
             return ageInYears
         
-# TODO : Metodi sukupuolen selvittämiseen sekä number- ja gender-ominaisuuden asettaisen
+# Metodi sukupuolen selvittämiseen sekä number- ja gender-ominaisuuden asettaisen
     def getGender(self):
 
     # Tarkistetaan ensin, onko SSN oikein syötetty
@@ -190,7 +189,7 @@ class NationalSSN:
             self.number = number
 
             # Selvitetään onko parillinen (tyttö) vai paritan (poika)
-            if number % 2== 0:
+            if number % 2 == 0:
                 self.gender = "Nainen"
             else:
                 self.gender = "Mies"

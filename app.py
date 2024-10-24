@@ -18,14 +18,15 @@ kameraIndeksi: int = 1 # Ensimmäinen kamera on aina 0
 
 while True:
     
-    userGivenSsn =  input("Syötä asiakkaan henkilötunnus: ")
-    userGivenSsn = userGivenSsn.upper() # Varmistetaan, että tarkiste on
+    userGivenSsn = input('Syötä asiakkaan henkilötunnus: ')
+    userGivenSsn = userGivenSsn.upper() # Varmistetaan, että tarkiste on isolla
     
-    # TODO: Tee tarkistus siitä, että nim ei voi olla tyhjä
+    # TODO: Tee tarkistus siitä, että nimi ei voi olla tyhjä
 
-    # TODO: Rakenna funktio, joilla kysytään nimet ja yhdysnimet isoille alkukirjaimille -> reg exp
-
-
+    # TODO: Rakenna funktio, jolla kysytään nimet ja muutetaan yhdysnimet isoille alkukirjaimille -> reg exp
+    
+    
+    
 
     ssnToCheck = identityCheck2.NationalSSN(userGivenSsn)
     if ssnToCheck.isValidSsn() == True:
@@ -33,20 +34,21 @@ while True:
             ssnToCheck.getDateOfBirth()
             ssnToCheck.getGender()
             age = ssnToCheck.calculateAge()
-            userGivenLastname = input("Syötä asiakkan sukunimi ")
+            userGivenLastname = input('Syötä asiakkaan sukunimi: ')
             userGivenLastname = userGivenLastname.capitalize()
-            userGivenFirstname = input("Syötä asikkan etunimi ")
+            userGivenFirstname = input('Syötä asiakkaan etunimi: ')
             userGivenFirstname = userGivenFirstname.capitalize()
-            print("Syntymäaika:", ssnToCheck.dateOfBirth)
-            print("Ikä:", age)
-            print("Sukupuoli:", ssnToCheck.gender)
+            print('Asiakas:', userGivenLastname, userGivenFirstname)
+            print('Syntymäaika:', ssnToCheck.dateOfBirth)
+            print('Ikä:', age)
+            print('Sukupuoli:', ssnToCheck.gender)
         except Exception as e:
-            print("Syöttämässäsi sosissliturvatunnuksessa oli virhe", e)
+            print('Syöttämässäsi sosiaaliturvatunnuksessa oli virhe', e)
         
 
-        # Kysytään halutaanko poistan ohjelmasta
-    wantAbort = input("Haluatko päättää ohjelman k/E: ")
-    # Mutetaan vastaus isoiksi kirjaimiksi ja tarkistetaan onko vastaus K
-    if wantAbort.upper == "K":
-        break # Poistetaan ikuiswsta silmukasta
+    # Kysytään halutaanko poistua ohjelmasta
+    wantAbort = input('Haluatko päättää ohjelman k/E: ')
+     # Muutetaan vastaus isoiksi kirjaimiksi ja tarkistetaan onko vastaus K
+    if wantAbort.upper() == 'K':
+        break # Poistutaan ikuisesta silmukasta
 

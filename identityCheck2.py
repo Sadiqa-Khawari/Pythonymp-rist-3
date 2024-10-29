@@ -160,12 +160,11 @@ class NationalSSN:
             self.dateOfBirth = isoDate
 
     # Lasketaan ikä nyt täysinä vuosina
-    def calculateAge(self) -> int : 
-        """calculate age in full years from SSN
+    def calculateAge(self) -> int :
+        """Calculates age in full years from SSN
 
         Returns:
-            int: age
-
+            int: age in years
         """
         # Tarkistetaan ennen laskentaa, että henkilötunnus on oikein syötetty
         if self.isValidSsn():  # Tarkistaa onko hetu syötetty oikein
@@ -184,11 +183,11 @@ class NationalSSN:
             return ageInYears
         else:
             return 0
+        
     # Metodi sukupuolen selvittämiseen sekä number- ja gender-ominaisuuden asettamiseen
     def getGender(self) -> None:
-        """Set the gender property of the object (in finish)
+        """Sets the gender property of the object (in finnish)
         """
-
         # Tarkistetaan ensin, onko SSN oikein syötetty
         if self.isValidSsn():
 
@@ -215,12 +214,13 @@ if __name__ == "__main__":
         hetu1 = NationalSSN('130728x478N')
         hetu1.checkSsnLengthOk()
         hetu1.getDateOfBirth()
+        print('On oikean pituinen:', hetu1.checkSsnLengthOk())
+        print('Henkilötunnus on oikein muodostettu', hetu1.isValidSsn())
+        print('HeTun osat ovat: ', hetu1.splitSsn())
+        print('Syntymäaikaosa ISO-muodossa on ', hetu1.dateOfBirth)
     except Exception as e:
         print('Tapahtui virhe:', e)
     
 
-    print('On oikean pituinen:', hetu1.checkSsnLengthOk())
-    print('Henkilötunnus on oikein muodostettu', hetu1.isValidSsn())
-    print('HeTun osat ovat: ', hetu1.splitSsn())
-    print('Syntymäaikaosa ISO-muodossa on ', hetu1.dateOfBirth)
+    
    

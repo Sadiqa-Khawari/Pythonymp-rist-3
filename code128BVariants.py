@@ -1,4 +1,4 @@
-# Merkkijono, josta 
+# Merkkijono, josta tehdään viivakoodia common-variantti
 while True:
 
     text = input("Syötä kirjain: ")

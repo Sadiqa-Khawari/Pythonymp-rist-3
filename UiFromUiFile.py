@@ -27,9 +27,15 @@ window.setWindowTitle('TÄMÄ ON PÄÄIKKUNA')
 # Luodaan osoitin (pointer), joka viittaa käyttöliittymän elementtiin label
 label = window.findChild(QtWidgets.QLabel, 'label')
 
-statusBar = window.findChild(QtWidgets.QStatusBar, 'statusbar')
-statusBar.showMessage('Kaikki hyvin', -1)
+# Muutetaan label-elementin sisältö
 label.setText('Muutettu tekstiä')
+
+# Luodaan osoitin sovelluksen tilariville
+statusBar = window.findChild(QtWidgets.QStatusBar, 'statusbar')
+
+# Kirjoitetaan teksti tilariville ja pidetään se näkyvissä koko ajan (-1)
+statusBar.showMessage('Kaikki hyvin', -1)
+
 
 # Määritellään ikkuna näkyväksi, oletuksena kaikki ikkunat ovat piilotettuja
 window.show()

@@ -1,5 +1,5 @@
 # PYSIDE6-MALLINE SOVELLUKSEN PÄÄIKKUNAN LUOMISEEN
-# KÄÄNNETYSTÄ KÄYTTÖLIITTYMÄTIEDOSTOSTA (MainWindow.py)
+# KÄÄNNETYSTÄ KÄYTTÖLIITTYMÄTIEDOSTOSTA (mainWindow_ui.py)
 # =====================================================
 
 # KIRJASTOJEN JA MODUULIEN LATAUKSET
@@ -8,7 +8,7 @@ import os # Polkumääritykset
 import sys # Käynnistysargumentit
 
 from PySide6 import QtWidgets # Qt-vimpaimet
-from MainWindow import Ui_MainWindow # Käännetyn käyttöliittymän luokka
+from mainWindow_ui import Ui_MainWindow # Käännetyn käyttöliittymän luokka
 
 # Määritellään luokka, joka perii QMainWindow- ja Ui_MainWindow-luokan
 class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
@@ -17,9 +17,27 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     # Määritellään olionmuodostin ja kutsutaan yliluokkien muodostimia
     def __init__(self):
         super().__init__()
+        self.ui = Ui_MainWindow()
 
-        # Kutsutaa käyttöliittymän muodostusmetodia setupUi
-        self.setupUi(self)
+        self.ui.setupUi(self)
+
+        self.ui.TulostapushButton.clicked.connect(self.updateTulostaLabel)
+        self.ui.varoitapushButton.clicked.connect(self.openWarning)
+
+    def updateTulostaLabel(self):
+        self.ui.tulostettuLabel.setText("Tulostettu")
+        self.ui.tulostettuLabel.setStyleSheet(u"color: rgb(0, 255, 0);")
+
+    # Avataan MessageBox
+    def openWarning(self):
+        msgBox = QtWidgets.QMessageBox()
+        msgBox.setIcon(QtWidgets.QMessageBox.Critical)
+        msgBox.setWindowTitle("Hirveetä!")
+        msgBox.setText("Jotain kamalaa tapahtui")
+        msgBox.setStandardButtons(QtWidgets.QMessageBox.Ok)
+        msgBox.exec() 
+
+        
 
 # Luodaan sovellus
 app = QtWidgets.QApplication(sys.argv)

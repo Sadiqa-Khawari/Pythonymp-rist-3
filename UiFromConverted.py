@@ -17,8 +17,11 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     # Määritellään olionmuodostin ja kutsutaan yliluokkien muodostimia
     def __init__(self):
         super().__init__()
+
+         # Luodaan käyttöliittymä konvertoidun tiedoston perusteella MainWindow:n ui-ominaisuudeksi. Tämä suojaa lopun MainWindow-olion ylikirjoitukselta, kun ui-tiedostoa päivitetään
         self.ui = Ui_MainWindow()
 
+        #  Kutsutaan käyttöliittymän muodostusmetodia setupUi
         self.ui.setupUi(self)
 
         self.ui.TulostapushButton.clicked.connect(self.updateTulostaLabel)

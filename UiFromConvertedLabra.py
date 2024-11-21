@@ -12,7 +12,7 @@ from Labra_ui import Ui_MainWindow # Käännetyn käyttöliittymän luokka
 
 import identityCheck2 # Henkilötunnuksen tarkistukseen liityvät luokka
 import barcode  # Viivakoodin muodostukseen tarvittavat rutiinit
-from avtools import sound # Äänitoiminnot
+# from avtools import sound # Äänitoiminnot
 
 # Määritellään luokka, joka perii QMainWindow- ja Ui_MainWindow-luokan
 class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
@@ -51,7 +51,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
         
         # jos se muostettu väärin näytetaan virheilmotus MessageBox-ikkunassa
-
+        self.ui.barcodeLabel.setText()
         self.errorTitle = "Henkilötunnus virheellinen"
         self.errorText = "Syöttämässäsi henkilötunnuksessa on virhe"
         self.openErrorMsgBox(self.errorTitle, self.errorText)

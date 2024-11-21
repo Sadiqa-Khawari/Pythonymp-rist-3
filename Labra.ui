@@ -142,12 +142,15 @@
     </property>
    </widget>
    <widget class="QPushButton" name="printPushButton">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>350</x>
       <y>210</y>
       <width>111</width>
-      <height>31</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="font">
@@ -157,6 +160,9 @@
     </property>
     <property name="styleSheet">
      <string notr="true"/>
+    </property>
+    <property name="locale">
+     <locale language="Finnish" country="Finland"/>
     </property>
     <property name="text">
      <string>Tulosta</string>
@@ -168,13 +174,16 @@
       <x>270</x>
       <y>210</y>
       <width>71</width>
-      <height>31</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <pointsize>20</pointsize>
      </font>
+    </property>
+    <property name="locale">
+     <locale language="Finnish" country="Finland"/>
     </property>
     <property name="alignment">
      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
